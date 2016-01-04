@@ -68,7 +68,7 @@
                        
                         <!-- start: User Dropdown -->
                         <li>
-                            <a href="<?php echo base_url('digitalController/login');?>">
+                            <a href="<?php echo base_url('digitalController/logoutUser');?>">
                                 <i class="halflings-icon chevron-left white"></i> Logout
                             </a>
                         </li>
