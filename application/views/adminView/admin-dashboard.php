@@ -18,6 +18,7 @@
                                 </div>
                             </div>
                             <div class="box-content">
+                                <a href="#" class="btn btn-info btn-setting">Click for dialog</a>
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
                                 <div class="row-fluid">
                                 <div class="span6">
@@ -38,6 +39,7 @@
                                         <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" style="width: 120px;">I.D.</th>
                                         <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" style="width: 250px;">Subject</th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 250px;">Sender</th>
+                                                                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;">Keyword</th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;">Date</th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Actions</th>
                                         </tr>
@@ -49,16 +51,13 @@
                                              <td class=" sorting_1" style="width: 120px;">Dennis Ji</td>
                                             <td class="center " style="width: 250px;">Department of Environment and Natural Resources . 1021</td>
                                             <td class="center " style="width: 250px;">Shun Chuy Gwapo ang batang adib2x and pinaka gwapo</td>
+                                            <td class="center " style="width: 130px;">Shun</td>
                                             <td class="center " style="width: 130px;">2016/04/01</td>
                                             </td>
                                             <td class="center ">
                                                  <a class="btn btn-info" href="#">
                                                  <i class="halflings-icon folder-open white"></i>  
                                                     View
-                                                </a>
-                                                <a class="btn btn-success" href="#">
-                                                    <i class="halflings-icon download-alt white"></i>
-                                                    Download
                                                 </a>
                                                  <a class="btn btn-danger" href="#">
                                                     <i class="halflings-icon white trash"></i> 
@@ -74,7 +73,65 @@
             </div>
             
         </div>
-            <br>
+
+        <!-- Modal -->
+            <div class="modal hide fade" id="myModal" aria-hidden="true" style="display: none;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h3><i class="halflings-icon plus"></i>Add Documents</h3>
+                        </div>
+
+                <div class="modal-body">
+                    <div class=" span5">
+                            <br>
+                            <form class="form-horizontal" action="#" method="POST">
+                              <fieldset>
+                                <div class="control-group">
+                                  <label class="control-label" for="subject"> Subject</label>
+                                  <div class="controls">
+                                    <input type="text" name="subject" placeholder="Ex. Subject">
+                                  </div>
+                                </div>
+                                <div class="control-group">
+                                  <label class="control-label" for="sender"> Sender</label>
+                                  <div class="controls">
+                                    <input type="text" name="sender" placeholder="Ex. Sender Name">
+                                  </div>
+                                </div>
+                                <div class="control-group">
+                                  <label class="control-label" for="keyword"> Keyword</label>
+                                  <div class="controls">
+                                    <input type="text" name="keyword" placeholder="Ex. Keyword">
+                                  </div>
+                                </div>
+                                <div class="control-group">
+                                  <label class="control-label" for="date01">Date input</label>
+                                  <div class="controls">
+                                    <input type="date" id="date01">
+                                  </div>
+                                </div>
+
+                                <div class="control-group">
+                                  <label class="control-label" for="fileInput">File input</label>
+                                  <div class="controls">
+                                    <div class="uploader" id="uniform-fileInput"><input class="input-file uniform_on" id="fileInput" type="file"><span class="filename" style="-webkit-user-select: none;">No file selected</span><span class="action" style="-webkit-user-select: none;">Choose File</span></div>
+                                  </div>
+                                </div> 
+                                </fieldset>
+                            </form>   
+
+                    
+                    </div>
+                </div>
+
+                    <div class="modal-footer">
+                        <a href="#" class="btn" data-dismiss="modal">Close</a>
+                        <a href="#" class="btn btn-primary">Save changes</a>
+                    </div>
+            </div>
+        <!-- End of Modal -->
+
+               <br>
 
         <footer class="footer bg-black" style="padding: 0px; color:#ffffff; border-top: 3px ridge #cfcfcf;">
             <p class="" style="padding: 2px; margin: 0px; text-align: center; background-color: black; font-size: 12px;">
@@ -85,5 +142,7 @@
 
 
         <?php include 'script.php'; ?>
+        <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="position: absolute; top: 278px; left: 414.547px; z-index: 51; display: none;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="Prev"><span class="ui-icon ui-icon-circle-triangle-w">Prev</span></a><a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click" title="Next"><span class="ui-icon ui-icon-circle-triangle-e">Next</span></a><div class="ui-datepicker-title"><span class="ui-datepicker-month">February</span>&nbsp;<span class="ui-datepicker-year">2012</span></div></div><table class="ui-datepicker-calendar"><thead><tr><th class="ui-datepicker-week-end"><span title="Sunday">Su</span></th><th><span title="Monday">Mo</span></th><th><span title="Tuesday">Tu</span></th><th><span title="Wednesday">We</span></th><th><span title="Thursday">Th</span></th><th><span title="Friday">Fr</span></th><th class="ui-datepicker-week-end"><span title="Saturday">Sa</span></th></tr></thead><tbody><tr><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">1</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">2</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">3</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">4</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">5</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">6</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">7</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">8</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">9</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">10</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">11</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">12</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">13</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">14</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">15</a></td><td class="  ui-datepicker-current-day" data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default ui-state-active" href="#">16</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">17</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">18</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">19</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">20</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">21</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">22</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">23</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">24</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">25</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">26</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">27</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">28</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="1" data-year="2012"><a class="ui-state-default" href="#">29</a></td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div>
+
     </body>
 </html>

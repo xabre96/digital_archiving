@@ -38,6 +38,7 @@
                                         <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" style="width: 120px;">I.D.</th>
                                         <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" style="width: 250px;">Subject</th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 250px;">Sender</th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;">Keyword</th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;">Date</th>
                                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Actions</th>
                                         </tr>
@@ -49,15 +50,12 @@
                                             <td class=" sorting_1" style="width: 120px;">Dennis Ji</td>
                                             <td class="center " style="width: 250px;">Department of Environment and Natural Resources . 1021</td>
                                             <td class="center " style="width: 250px;">Shun Chuy Gwapo ang batang adib2x and pinaka gwapo</td>
+                                            <td class="center " style="width: 200px;">Shun</td>
                                             <td class="center " style="width: 130px;">2016/04/01</td>
                                             <td class="center ">
                                                  <a class="btn btn-info" href="<?php echo base_url('digitalController/viewDocument');?>">
                                                  <i class="halflings-icon folder-open white"></i>  
                                                     View Document
-                                                </a>
-                                                <a class="btn btn-success" href="#">
-                                                    <i class="halflings-icon download-alt white"></i>
-                                                    Download File
                                                 </a>
                                             </td>
                                         </tr>
@@ -80,5 +78,6 @@
 
 
         <?php include 'script.php'; ?>
+        
     </body>
 </html>
