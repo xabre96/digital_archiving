@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <div class="box-content">
-                                <a href="#" class="btn btn-info btn-setting">Click for dialog</a>
+                                <a href="#" class="btn btn-info btn-setting">Add Document</a>
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
                                 <div class="row-fluid">
                                 <div class="span6">
@@ -84,41 +84,65 @@
                 <div class="modal-body">
                     <div class=" span5">
                             <br>
-                            <form class="form-horizontal" action="#" method="POST">
+                            <form class="form-horizontal" action="<?php echo base_url('digitalController/uploadDocument'); ?>" method="POST" enctype="multipart/form-data">
                               <fieldset>
                                 <div class="control-group">
+                                 <?php echo form_error('subject', '<p style="color:red;">', '</p>');?>
                                   <label class="control-label" for="subject"> Subject</label>
                                   <div class="controls">
                                     <input type="text" name="subject" placeholder="Ex. Subject">
                                   </div>
                                 </div>
                                 <div class="control-group">
+                                 <?php echo form_error('sender', '<p style="color:red;">', '</p>');?>
                                   <label class="control-label" for="sender"> Sender</label>
                                   <div class="controls">
                                     <input type="text" name="sender" placeholder="Ex. Sender Name">
                                   </div>
                                 </div>
                                 <div class="control-group">
+                                 <?php echo form_error('keyword', '<p style="color:red;">', '</p>');?>
                                   <label class="control-label" for="keyword"> Keyword</label>
                                   <div class="controls">
-                                    <input type="text" name="keyword" placeholder="Ex. Keyword">
+                                    <!-- <input type="text" name="keyword" placeholder="Ex. Keyword"> -->
+                                    <textarea name="keyword" style="width:205px;height:100px;"> </textarea>
                                   </div>
                                 </div>
+
                                 <div class="control-group">
-                                  <label class="control-label" for="date01">Date input</label>
+                                  <label class="control-label" for="cat">Category</label>
+                                  <div class="controls">
+                                    <select name="category">
+                                    <?php 
+                                        foreach ($category as $key => $value) {
+                                     ?>
+                                     <option value="<?php echo $value->category_id; ?>"><?php echo $value->category; ?></option>
+                                    <?php
+                                        }
+                                    ?>
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <div class="control-group">
+                                  <label class="control-label" for="date01">Document Date</label>
                                   <div class="controls">
                                     <input type="date" id="date01">
                                   </div>
                                 </div>
 
                                 <div class="control-group">
-                                  <label class="control-label" for="fileInput">File input</label>
+                                  <label class="control-label" for="fileInput">File</label>
                                   <div class="controls">
-                                    <div class="uploader" id="uniform-fileInput"><input class="input-file uniform_on" id="fileInput" type="file"><span class="filename" style="-webkit-user-select: none;">No file selected</span><span class="action" style="-webkit-user-select: none;">Choose File</span></div>
+                                    <div class="uploader" id="uniform-fileInput">
+                                        <input class="input-file uniform_on" id="fileInput" name="fileUpload[]" type="file" multiple="multiple">
+                                        <span class="filename" style="-webkit-user-select: none;">No file selected</span>
+                                        <span class="action" style="-webkit-user-select: none;">Choose File</span>
+                                    </div>
                                   </div>
                                 </div> 
                                 </fieldset>
-                            </form>   
+                              
 
                     
                     </div>
@@ -126,8 +150,10 @@
 
                     <div class="modal-footer">
                         <a href="#" class="btn" data-dismiss="modal">Close</a>
-                        <a href="#" class="btn btn-primary">Save changes</a>
+                        <!-- <a href="#" class="btn btn-primary">Save changes</a> -->
+                        <input type="submit" value="Save changes" class="btn btn-primary">
                     </div>
+                    </form> 
             </div>
         <!-- End of Modal -->
 

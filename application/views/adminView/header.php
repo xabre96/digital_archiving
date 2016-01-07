@@ -62,7 +62,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html"><span>REGION 10</span></a>
+                <a class="brand" href="<?php echo base_url('digitalController/adminDashboard'); ?>"><span>REGION 10</span></a>
                                 
                 <!-- start: Header Menu -->
                 <div class="nav-no-collapse header-nav">
