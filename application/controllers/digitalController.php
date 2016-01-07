@@ -56,56 +56,69 @@ class digitalController extends CI_Controller {
             );
             $this->load->view('adminView/admin-dashboard.php', $data);
         }else{
-            if($_FILES["fileUpload"]["type"][0]==null ){
-                echo 'no files';
-            } else{
-                $id = $this->document->getMaxDocumentId();
-                foreach ($id as $key => $value) {
-                    $maxId = $value->id+1;
-                }
-                if($maxId==null){
-                    $maxId = 1;
-                }
-                mkdir("documents/".$data['category']."/".$maxId);
-                $target_dir = "documents/".$data['category']."/".$maxId."/";
-                for ($i=0; $i < count($_FILES["fileUpload"]["name"]); $i++) {
-                    $target_file = $target_dir . basename($_FILES["fileUpload"]["name"][$i]);
-                    $uploadOk = 1;
-                    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-                    if(isset($_POST["submit"])) {
-                        $check = getimagesize($_FILES["fileUpload"]["tmp_name"][$i]);
-                        if($check !== false) {
-                            echo "File is an image - " . $check["mime"] . ".";
-                            $uploadOk = 1;
-                        } else {
-                            echo "File is not an image.";
-                            $uploadOk = 0;
-                        }
-                    }
-                    if (file_exists($target_file)) {
-                        echo "Sorry, file already exists.";
-                        $uploadOk = 0;
-                    }
-                    if ($_FILES["fileUpload"]["size"][$i] > 2000000) {
-                        echo "Sorry, your file is too large.";
-                        $uploadOk = 0;
-                    }
-                    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-                        echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
-                        $uploadOk = 0;
-                    }
+            echo 'hi';
+            var_dump($data);
+            /*****************PLEASE DO NOT ERASE*******************/
+            /////////////////////////////////////////////////////////
+            // $filename = "documents/".$data['category']."/".$maxId;
 
-                    if ($uploadOk == 0) {
-                        echo "Sorry, your file was not uploaded.";
-                    } else {
-                        if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"][$i], $target_file)) {
-                            echo "The file ". basename( $_FILES["fileUpload"]["name"][$i]). " has been uploaded.";
-                        } else {
-                            echo "Sorry, there was an error uploading your file.";
-                        }
-                    }
-                }
-            }
+            // if (file_exists($filename)) {
+            //     echo "The file $filename exists";
+            // } else {
+            //     echo "The file $filename does not exist";
+            // }
+            ////////////////////////////////////////////////////////
+
+            // if($_FILES["fileUpload"]["type"][0]==null ){
+            //     echo 'no files';
+            // } else{
+            //     $id = $this->document->getMaxDocumentId();
+            //     foreach ($id as $key => $value) {
+            //         $maxId = $value->id+1;
+            //     }
+            //     if($maxId==null){
+            //         $maxId = 1;
+            //     }
+            //     mkdir("documents/".$data['category']."/".$maxId);
+            //     $target_dir = "documents/".$data['category']."/".$maxId."/";
+            //     for ($i=0; $i < count($_FILES["fileUpload"]["name"]); $i++) {
+            //         $target_file = $target_dir . basename($_FILES["fileUpload"]["name"][$i]);
+            //         $uploadOk = 1;
+            //         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            //         if(isset($_POST["submit"])) {
+            //             $check = getimagesize($_FILES["fileUpload"]["tmp_name"][$i]);
+            //             if($check !== false) {
+            //                 echo "File is an image - " . $check["mime"] . ".";
+            //                 $uploadOk = 1;
+            //             } else {
+            //                 echo "File is not an image.";
+            //                 $uploadOk = 0;
+            //             }
+            //         }
+            //         if (file_exists($target_file)) {
+            //             echo "Sorry, file already exists.";
+            //             $uploadOk = 0;
+            //         }
+            //         if ($_FILES["fileUpload"]["size"][$i] > 2000000) {
+            //             echo "Sorry, your file is too large.";
+            //             $uploadOk = 0;
+            //         }
+            //         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+            //             echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
+            //             $uploadOk = 0;
+            //         }
+
+            //         if ($uploadOk == 0) {
+            //             echo "Sorry, your file was not uploaded.";
+            //         } else {
+            //             if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"][$i], $target_file)) {
+            //                 echo "The file ". basename( $_FILES["fileUpload"]["name"][$i]). " has been uploaded.";
+            //             } else {
+            //                 echo "Sorry, there was an error uploading your file.";
+            //             }
+            //         }
+            //     }
+            // }
         }
     }
 
