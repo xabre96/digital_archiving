@@ -127,7 +127,7 @@
                                 <div class="control-group">
                                   <label class="control-label" for="date01">Document Date</label>
                                   <div class="controls">
-                                    <input type="date" id="date01">
+                                    <input type="date" id="date01" name="date">
                                   </div>
                                 </div>
 

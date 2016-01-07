@@ -11,4 +11,8 @@ class Document_Model extends CI_Model {
     public function getMaxDocumentId(){
     	return $this->db->query("SELECT max(document_id) as id from document")->result();
     }
+
+    public function insertDocument($data){
+    	$this->db->insert('document', $data);
+    }
 }
