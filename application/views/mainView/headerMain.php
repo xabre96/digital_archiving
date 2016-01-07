@@ -63,7 +63,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html"><span><i class="halflings-icon home"></i>HOME</span></a>
+                <a class="brand" href="<?php echo base_url('digitalController/index'); ?>"><span><i class="halflings-icon home"></i>HOME</span></a>
                                             
             </div>
         </div>

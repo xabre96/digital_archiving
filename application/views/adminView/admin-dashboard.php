@@ -47,12 +47,13 @@
                                     
                                 <tbody role="alert" aria-live="polite" aria-relevant="all">
 
+                              <?php foreach ($document as $key => $val) { ?>
                                 <tr class="odd">
-                                             <td class=" sorting_1" style="width: 120px;">Dennis Ji</td>
-                                            <td class="center " style="width: 250px;">Department of Environment and Natural Resources . 1021</td>
-                                            <td class="center " style="width: 250px;">Shun Chuy Gwapo ang batang adib2x and pinaka gwapo</td>
-                                            <td class="center " style="width: 130px;">Shun</td>
-                                            <td class="center " style="width: 130px;">2016/04/01</td>
+                                            <td class=" sorting_1" style="width: 120px;"><?php echo $val->document_id; ?></td>
+                                            <td class="center " style="width: 250px;"><?php echo $val->subject; ?></td>
+                                            <td class="center " style="width: 250px;"><?php echo $val->sender; ?></td>
+                                            <td class="center " style="width: 130px;"><?php echo $val->keyword; ?></td>
+                                            <td class="center " style="width: 130px;"><?php echo $val->date; ?></td>
                                             </td>
                                             <td class="center ">
                                                  <a class="btn btn-info" href="#">
@@ -64,8 +65,8 @@
                                                     Delete
                                                 </a>
                                             </td>
-                                        </tr>
-
+                                 </tr>
+                                <?php } ?>
                                         </tbody>
                                     </table>           
                             </div>

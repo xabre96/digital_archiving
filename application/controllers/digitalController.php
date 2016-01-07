@@ -20,7 +20,10 @@ class digitalController extends CI_Controller {
         if($this->session->userdata('logged_in')!=FALSE){
             redirect('digitalController/adminDashBoard');
         }else{
-            $this->load->view('mainView/index.php');
+            $data = array(
+                "document" => $this->document->getDocuments()
+            );
+            $this->load->view('mainView/index.php', $data);
         }
     }
 
@@ -143,6 +146,7 @@ class digitalController extends CI_Controller {
                             echo "The file ". basename( $_FILES["fileUpload"]["name"][$i]). " has been uploaded.";
                             $attach = array(
                                 'attach_id' => $data['subject'],
+                                'filename' => $_FILES["fileUpload"]["name"][$i],
                                 'document_id' => $maxId
                             );
                             $attach_id = $this->attach->insertAttach($attach);
@@ -155,12 +159,13 @@ class digitalController extends CI_Controller {
                 $ids = array(
                     'date_id' => $date_id,
                     'keyword_id' => $key_id,
-                    'category_id' => $data['category'];
+                    'category_id' => $data['category'],
                     'sender_id' => $sender_id,
                     'subject_id' => $subject_id,
                     'document_id' => $maxId
                 );
                 $this->document->insertDocument($ids);
+                redirect('digitalController/adminDashBoard');
             }
         }
     }
@@ -170,14 +175,21 @@ class digitalController extends CI_Controller {
             redirect('digitalController/index');
         }else{
             $data = array(
-                "category" => $this->category->getCategory()
+                "category" => $this->category->getCategory(),
+                "document" => $this->document->getDocuments()
             );
             $this->load->view('adminView/admin-dashboard.php', $data);
         }
     }
 
-    public function viewDocument (){
-            $this->load->view('mainView/viewdocument.php');
+    public function viewDocument ($category_id, $document_id){
+        $name = $this->attach->getAttach($document_id);
+        $data = array(
+            'category_id' => $category_id,
+            'document_id' => $document_id,
+            'fileName' => $name
+        );
+        $this->load->view('mainView/viewdocument.php', $data);
     }
 
     public function logoutUser(){

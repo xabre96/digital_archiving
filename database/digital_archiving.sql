@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2016 at 09:27 AM
+-- Generation Time: Jan 07, 2016 at 10:18 AM
 -- Server version: 10.1.8-MariaDB
 -- PHP Version: 5.6.14
 
@@ -31,6 +31,19 @@ CREATE TABLE `attach` (
   `filename` text NOT NULL,
   `document_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `attach`
+--
+
+INSERT INTO `attach` (`attach_id`, `filename`, `document_id`) VALUES
+(1, '3.png', 1),
+(2, '7.png', 1),
+(3, '3.png', 2),
+(4, '7.png', 2),
+(5, '12.jpg', 3),
+(6, '82d.jpg', 3),
+(7, '222.png', 3);
 
 -- --------------------------------------------------------
 
@@ -67,9 +80,18 @@ INSERT INTO `category` (`category_id`, `category`) VALUES
 
 CREATE TABLE `date` (
   `date_id` int(11) NOT NULL,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
   `document_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `date`
+--
+
+INSERT INTO `date` (`date_id`, `date`, `document_id`) VALUES
+(1, '2016-01-07', 1),
+(2, '2016-01-07', 2),
+(3, '2016-01-07', 3);
 
 -- --------------------------------------------------------
 
@@ -82,10 +104,18 @@ CREATE TABLE `document` (
   `subject_id` int(11) NOT NULL,
   `date_id` int(11) NOT NULL,
   `sender_id` int(11) NOT NULL,
-  `attach_id` int(11) NOT NULL,
   `keyword_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `document`
+--
+
+INSERT INTO `document` (`document_id`, `subject_id`, `date_id`, `sender_id`, `keyword_id`, `category_id`) VALUES
+(1, 1, 1, 1, 1, 1),
+(2, 2, 2, 2, 2, 1),
+(3, 3, 3, 3, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -99,6 +129,15 @@ CREATE TABLE `keywords` (
   `document_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `keywords`
+--
+
+INSERT INTO `keywords` (`keyword_id`, `keyword`, `document_id`) VALUES
+(1, 'asd ', 1),
+(2, 'a ', 2),
+(3, 'lalal ', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -111,6 +150,15 @@ CREATE TABLE `sender` (
   `document_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `sender`
+--
+
+INSERT INTO `sender` (`sender_id`, `sender`, `document_id`) VALUES
+(1, 'asd', 1),
+(2, 'a', 2),
+(3, 'a', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +170,15 @@ CREATE TABLE `subject` (
   `subject` text NOT NULL,
   `document_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`subject_id`, `subject`, `document_id`) VALUES
+(1, 'asd', 1),
+(2, 'a', 2),
+(3, 'l', 3);
 
 -- --------------------------------------------------------
 
@@ -227,7 +284,7 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `attach`
 --
 ALTER TABLE `attach`
-  MODIFY `attach_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `attach_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `category`
 --
@@ -237,27 +294,27 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `date`
 --
 ALTER TABLE `date`
-  MODIFY `date_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `date_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `document`
 --
 ALTER TABLE `document`
-  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `keywords`
 --
 ALTER TABLE `keywords`
-  MODIFY `keyword_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `keyword_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `sender`
 --
 ALTER TABLE `sender`
-  MODIFY `sender_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `sender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `user_account`
 --

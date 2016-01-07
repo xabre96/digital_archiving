@@ -6,7 +6,11 @@
                     <div class="span12" style="background: gray; box-shadow: 10px 10px 5px #888888;">
                             <center>
                                 <h2 style="color: white;">Document Details</h2>
-                                 <img src="<?php echo base_url('images/example_img.png'); ?>" alt="image-view">
+                                <?php 
+                                foreach ($fileName as $key => $value) {
+                                ?>
+                                 <img src="<?php echo base_url('documents/'.$category_id.'/'.$document_id.'/'.$value->filename); ?>" alt="<?php echo $value->filename;?>"/>
+                                <?php } ?>
                             </center>
                     </div>
                </div>

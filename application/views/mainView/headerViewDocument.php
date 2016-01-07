@@ -81,7 +81,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html"><span><i class="halflings-icon home"></i>HOME</span></a>
+                <a class="brand" href="<?php echo base_url('digitalController/index'); ?>"><span><i class="halflings-icon home"></i>HOME</span></a>
                
                  <button class="btn btn-default pull-right btn-flat" onclick="window.print();" style="margin-top: 7px; margin-left: 5px; width: 150px;"><i class="fa fa-print"></i> Print</button>                                     
                  <button class="btn btn-danger pull-right btn-flat"  style="margin-top: 7px; width: 150px;"><i class="halflings-icon download-alt white"></i>Export to PDF</button>
