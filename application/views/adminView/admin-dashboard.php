@@ -56,11 +56,11 @@
                                             <td class="center " style="width: 130px;"><?php echo $val->date; ?></td>
                                             </td>
                                             <td class="center ">
-                                                 <a class="btn btn-info" href="#">
+                                                 <a class="btn btn-info" href="<?php echo base_url('digitalController/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
                                                  <i class="halflings-icon folder-open white"></i>  
                                                     View
                                                 </a>
-                                                 <a class="btn btn-danger" href="#">
+                                                 <a class="btn btn-danger" href="<?php echo base_url('digitalController/deleteDocument/'.$val->category_id.'/'.$val->document_id);?>">
                                                     <i class="halflings-icon white trash"></i> 
                                                     Delete
                                                 </a>
@@ -142,16 +142,11 @@
                                     </div>
                                   </div>
                                 </div> 
-                                </fieldset>
-                              
-
-                    
+                          </fieldset>
                     </div>
                 </div>
-
                     <div class="modal-footer">
                         <a href="#" class="btn" data-dismiss="modal">Close</a>
-                        <!-- <a href="#" class="btn btn-primary">Save changes</a> -->
                         <input type="submit" value="Save changes" class="btn btn-primary">
                     </div>
                     </form> 
