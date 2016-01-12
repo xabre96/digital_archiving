@@ -7,19 +7,11 @@
                             <center>
                                 <h2 style="color: white;">Document Details</h2>
                                 <?php 
-                                if(!$fileName){
-                                ?>
-                                <!-- <img src="<?php echo base_url('images/example_img.png'); ?>" alt="Default"> -->
-                               <?php
-                                redirect('digitalController/adminDashboard');
-                                }else{
-                                    foreach ($fileName as $key => $value) {
+                                foreach ($fileName as $key => $value) {
                                 ?>
                                  <img src="<?php echo base_url('documents/'.$category_id.'/'.$document_id.'/'.$value->filename); ?>" alt="<?php echo $value->filename;?>"/>
-                                <?php 
-                                    }
-                                } 
-                                ?>
+                                <?php } ?>
+                                <br><br>
                             </center>
                     </div>
                </div>

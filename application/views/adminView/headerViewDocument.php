@@ -18,23 +18,6 @@
     <link id="base-style-responsive" href="<?php echo base_url('bootstrap/css/style-responsive.css');?>" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,cyrillic-ext,latin-ext" rel="stylesheet" type="text/css">
     <!-- End of bootstrap -->
-
-
-    <!-- 2nd Bootstrap name = bootstrap1 -->
-    <link href="<?php echo base_url('bootstrap1/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css">
-    <link href="<?php echo base_url('bootstrap1/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
-    <link href="<?php echo base_url('bootstrap1/css/ionicons.min.css'); ?>" rel="stylesheet" type="text/css">
-    <link href="<?php echo base_url('bootstrap1/css/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet" type="text/css">
-    <link href="<?php echo base_url('bootstrap1/css/AdminLTE.css'); ?>" rel="stylesheet" type="text/css">
-    
-    <link href="<?php echo base_url('bootstrap1/css/bootstrap.min.css'); ?>" rel="stylesheet"    type="text/css"/>
-    <link href="<?php echo base_url('bootstrap1/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css"/>
-    <link href="<?php echo base_url('bootstrap1/css/ionicons.min.css'); ?>" rel="stylesheet"     type="text/css"/>
-    <link href="<?php echo base_url('bootstrap1/css/AdminLTE.css'); ?>" rel="stylesheet"         type="text/css"/>
-    <link href="<?php echo base_url('bootstrap1/css/datatables/dataTables.bootstrap.css'); ?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('bootstrap1/css/fullcalendar/fullcalendar.print.css'); ?>" rel="stylesheet" type="text/css" media='print' />
-    <link href="<?php echo base_url('bootstrap1/css/bootstrap-datetimepicker.min.css'); ?>" rel="stylesheet" media="screen">
-    <!-- End of bootstrap1 -->
     </head>
             <style>
        
@@ -81,10 +64,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="<?php echo base_url('digitalController/adminDashboard'); ?>"><span><i class="halflings-icon home"></i>BACK</span></a>
+                <a class="brand" href="<?php echo base_url('digitalController/adminDashboard'); ?>"><span><i class="halflings-icon arrow-left white" style="font-size: 40px;"></i>BACK</span></a>
                
-                 <button class="btn btn-default pull-right btn-flat" onclick="window.print();" style="margin-top: 7px; margin-left: 5px; width: 150px;"><i class="fa fa-print"></i> Print</button>                                     
-                 <button class="btn btn-danger pull-right btn-flat"  style="margin-top: 7px; width: 150px;"><i class="halflings-icon download-alt white"></i>Export to PDF</button>
+                 
+                 <button class="btn btn-danger pull-right btn-flat"  style="margin-top: 3px; width: 150px;"><i class="halflings-icon download-alt white"></i>Export to PDF</button>
                 
             </div>
         </div>

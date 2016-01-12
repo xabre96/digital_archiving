@@ -3,7 +3,7 @@
     <head>
         
     <meta charset="utf-8">
-    <title>Bootstrap Metro Dashboard by Dennis Ji for ARM demo</title>
+    <title>Digital Archiving</title>
     <meta name="description" content="Bootstrap Metro Dashboard">
     <meta name="author" content="Dennis Ji">
     <meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
@@ -17,9 +17,6 @@
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,cyrillic-ext,latin-ext" rel="stylesheet" type="text/css">
     <!-- End of bootstrap -->
 
-            <style>
-       
-        </style>
         <style type="text/css">.jqstooltip {
                 position: absolute;
                 left: 0px;
@@ -51,6 +48,11 @@
                 text-align: center;
                 }
 
+        #ImgBanner{
+                    height: 125px;
+                    width: 580px;
+                    margin-top: 15px;
+                }    
             </style>
     </head>
     <header>
@@ -62,23 +64,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="<?php echo base_url('digitalController/adminDashboard'); ?>"><span>REGION 10</span></a>
-                                
-                <!-- start: Header Menu -->
-                <div class="nav-no-collapse header-nav">
-                    <ul class="nav pull-right">
-                       
-                        <!-- start: User Dropdown -->
-                        <li>
-                            <a href="<?php echo base_url('digitalController/logoutUser');?>">
-                                <i class="halflings-icon chevron-left white"></i> Logout
-                            </a>
-                        </li>
-                        <!-- end: User Dropdown -->
-                    </ul>
+                <center>
+               <img src="<?php echo base_url('images/banner-logo.png'); ?>" alt="image-banner" id="ImgBanner"/>
+                </center>
+                  <!-- <a href="<?php echo base_url('digitalController/logoutUser');?>" class="btn btn-flat pull-right" style="background-color: green; border-color: none; width: 100px;">Logout</a> -->
+  
+                <div>
+                    <a href="<?php echo base_url('digitalController/logoutUser');?>" class="btn btn-small btn-danger pull-right" style="width: 100px; margin-right: 60px; color: white;">Logout</a>
                 </div>
-                <!-- end: Header Menu -->
-                
             </div>
         </div>
     </div>

@@ -4,21 +4,15 @@
             <br>
         <div class="container">
 
-                <center>
-                     <img src="<?php echo base_url('images/logo.png'); ?>" id="ImgLogo" alt="image-log">
-               </center>
              <br>
              <div class="box span12">
                             <div class="box-header" data-original-title="">
-<!--                                 <h2><i class="halflings-icon user"></i><span class="break"></span>Members</h2> -->
                                 <div class="box-icon">
-<!--                                     <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
-                                    <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
-                                    <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a> -->
+                                    <h2 style="margin-right: 35px;"><strong>Document List<i class="halflings-icon th-list"></i></strong></h2>
                                 </div>
                             </div>
                             <div class="box-content">
-                                <a href="#" class="btn btn-info btn-setting">Add Document</a>
+                                <a href="#" class="btn btn-info btn-setting btn-small"><i class="halflings-icon edit white"></i>Add Document</a>
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
                                 <div class="row-fluid">
                                 <div class="span6">
@@ -36,34 +30,36 @@
                                 <table class="table table-striped table-bordered bootstrap-datatable datatable dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
                                     <thead>
                                         <tr role="row">
-                                        <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" style="width: 120px;">I.D.</th>
-                                        <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" style="width: 250px;">Subject</th>
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 250px;">Sender</th>
-                                                                                <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;">Keyword</th>
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;">Date</th>
-                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Actions</th>
+                                        <th style="font-size: 14px;" class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" style="width: 250px;">Subject</th>
+                                        <th style="font-size: 14px;" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 250px;">Sender</th>
+                                        <th style="font-size: 14px;" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;">Keyword</th>
+                                        <th style="font-size: 14px;" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 130px;">Date</th>
+                                        <th style="font-size: 14px;" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Actions</th>
                                         </tr>
                                     </thead>   
                                     
                                 <tbody role="alert" aria-live="polite" aria-relevant="all">
 
                               <?php foreach ($document as $key => $val) { ?>
+                              
                                 <tr class="odd">
-                                            <td class=" sorting_1" style="width: 120px;"><?php echo $val->document_id; ?></td>
-                                            <td class="center " style="width: 250px;"><?php echo $val->subject; ?></td>
-                                            <td class="center " style="width: 250px;"><?php echo $val->sender; ?></td>
-                                            <td class="center " style="width: 130px;"><?php echo $val->keyword; ?></td>
-                                            <td class="center " style="width: 130px;"><?php echo $val->date; ?></td>
+                                            <td style="font-size: 12px;" class="center " ><?php echo $val->subject; ?></td>
+                                            <td style="font-size: 12px;" class="center " ><?php echo $val->sender; ?></td>
+                                            <td style="font-size: 12px;" class="center " ><?php echo $val->keyword; ?></td>
+                                            <td style="font-size: 12px;" class="center " ><?php echo $val->date; ?></td>
                                             </td>
-                                            <td class="center ">
-                                                 <a class="btn btn-info" href="<?php echo base_url('digitalController/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
+                                            
+                                            <td style="font-size: 12px;" class="center ">
+                                            <center>
+                                                 <a class="btn btn-info btn-small white" href="<?php echo base_url('digitalController/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
                                                  <i class="halflings-icon folder-open white"></i>  
                                                     View
                                                 </a>
-                                                 <a class="btn btn-danger" href="<?php echo base_url('digitalController/deleteDocument/'.$val->category_id.'/'.$val->document_id);?>">
+                                                 <a class="btn btn-danger btn-small" href="<?php echo base_url('digitalController/deleteDocument/'.$val->category_id.'/'.$val->document_id);?>">
                                                     <i class="halflings-icon white trash"></i> 
                                                     Delete
                                                 </a>
+                                                </center>
                                             </td>
                                  </tr>
                                 <?php } ?>
@@ -103,7 +99,7 @@
                                 </div>
                                 <div class="control-group">
                                  <?php echo form_error('keyword', '<p style="color:red;">', '</p>');?>
-                                  <label class="control-label" for="keyword"> Keyword</label>
+                                  <label class="control-label" for="keyword">Keywords</label>
                                   <div class="controls">
                                     <!-- <input type="text" name="keyword" placeholder="Ex. Keyword"> -->
                                     <textarea name="keyword" style="width:205px;height:100px;"> </textarea>
@@ -147,7 +143,7 @@
                 </div>
                     <div class="modal-footer">
                         <a href="#" class="btn" data-dismiss="modal">Close</a>
-                        <input type="submit" value="Save changes" class="btn btn-primary">
+                        <input type="submit" value="Save Document" class="btn btn-primary">
                     </div>
                     </form> 
             </div>

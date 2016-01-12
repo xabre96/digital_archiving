@@ -3,7 +3,7 @@
     <head>
         
     <meta charset="utf-8">
-    <title>Bootstrap Metro Dashboard by Dennis Ji for ARM demo</title>
+    <title>Digital Archiving</title>
     <meta name="description" content="Bootstrap Metro Dashboard">
     <meta name="author" content="Dennis Ji">
     <meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
@@ -43,7 +43,9 @@
                 text-align: left;
             }
         #ImgLogo {
-                height: 200px;
+                height: 90px;
+                margin-top: 15px;
+
             }
         #searchBar {
                 width: 730px;
@@ -51,10 +53,27 @@
                 font-size: 20px;
                 text-align: center;
                 }
+                #ImgBanner{
+                    height: 120px;
+                   margin-top: 15px;
+                }
+                 ::-webkit-input-placeholder {
+                    text-align: center;
+                }
+                :-moz-placeholder {
+                    text-align: center;
+                }
+                ::-moz-placeholder{
+                    text-align: center;
+                }
+                :ms-input-placeholder{
+                    text-align: center;
+                }
 
             </style>
     </head>
     <header>
+     
         <div class="navbar">
         <div class="navbar-inner">
             <div class="container-fluid">
@@ -63,22 +82,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="<?php echo base_url('digitalController/index'); ?>"><span>REGION 10</span></a>
-                                
-                <!-- start: Header Menu -->
-                <div class="nav-no-collapse header-nav">
-                    <ul class="nav pull-right">
-                       
-                        <!-- start: User Dropdown -->
-                        <li>
-                            <a href="<?php echo base_url('digitalController/login');?>">
-                                <i class="halflings-icon share-alt white"></i> Log In
-                            </a>
-                        </li>
-                        <!-- end: User Dropdown -->
-                    </ul>
+                
+               <img src="<?php echo base_url('images/main-banner-denr.png'); ?>" alt="image-banner" id="ImgBanner"/>
+               
+                <div>
+                    <a href="#" class="btn btn-small btn-setting btn-success pull-right" style="width: 100px; margin-right: 60px; color: white;">Login</a>
+                    
                 </div>
-                <!-- end: Header Menu -->
+                
+                
                 
             </div>
         </div>
