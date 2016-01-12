@@ -51,7 +51,7 @@
                                             
                                             <td style="font-size: 12px;" class="center ">
                                             <center>
-                                                 <a class="btn btn-info btn-small white" href="<?php echo base_url('digitalController/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
+                                                 <a class="btn btn-info btn-small white" href="<?php echo base_url('doc/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
                                                  <i class="halflings-icon folder-open white"></i>  
                                                     View
                                                 </a>
@@ -87,7 +87,8 @@
                                  <?php echo form_error('subject', '<p style="color:red;">', '</p>');?>
                                   <label class="control-label" for="subject"> Subject</label>
                                   <div class="controls">
-                                    <input type="text" name="subject" placeholder="Ex. Subject">
+                                    <!-- <input type="text" name="subject" placeholder="Ex. Subject"> -->
+                                    <textarea name="subject" cols="30" rows="10"></textarea>
                                   </div>
                                 </div>
                                 <div class="control-group">
@@ -129,6 +130,7 @@
                                 </div>
 
                                 <div class="control-group">
+                                  <?php echo "<p style='color: red'>".@$err_file."</p>"; ?>
                                   <label class="control-label" for="fileInput">File</label>
                                   <div class="controls">
                                     <div class="uploader" id="uniform-fileInput">

@@ -67,7 +67,7 @@
                 <a class="brand" href="<?php echo base_url('digitalController/adminDashboard'); ?>"><span><i class="halflings-icon arrow-left white" style="font-size: 40px;"></i>BACK</span></a>
                
                  
-                 <a href="<?php echo base_url('digitalController/toPDF'); ?>" class="btn btn-danger pull-right btn-small"  style="margin-top: 7px; width: 150px;"><i class="halflings-icon download-alt white"></i>Export to PDF</a>
+                 <a href="<?php echo base_url('doc/index'); ?>" class="btn btn-danger pull-right btn-small"  style="margin-top: 7px; width: 150px;"><i class="halflings-icon download-alt white"></i>Export to PDF</a>
                 
             </div>
         </div>

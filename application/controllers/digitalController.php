@@ -6,6 +6,8 @@ class digitalController extends CI_Controller
     
     public function __construct() {
         parent::__construct();
+        $this->load->library('pdf'); // Load library
+        $this->pdf->fontpath = 'font/'; // Specify font folder
         $this->load->model('Digital_Model', 'digital');
         $this->load->model('Category_Model', 'category');
         $this->load->model('Document_Model', 'document');
@@ -14,28 +16,6 @@ class digitalController extends CI_Controller
         $this->load->model('Sender_Model', 'sender');
         $this->load->model('Subject_Model', 'subject');
         $this->load->model('Attach_Model', 'attach');
-    }
-    
-    public function toPDF() {
-        // if (file_exists($pdfFilePath) == FALSE) {
-        //     ini_set('memory_limit', '32M');
-        //      // boost the memory limit if it's low <img class="emoji" draggable="false" alt="😉" src="https://s.w.org/images/core/emoji/72x72/1f609.png">
-        //     $html = $this->load->view('pdf_report', $data, true);
-        //      // render the view into HTML
-            
-        //     $this->load->library('pdf');
-        //     $pdf = $this->pdf->load();
-        //     $pdf->SetFooter($_SERVER['HTTP_HOST'] . '|{PAGENO}|' . date(DATE_RFC822));
-        //      // Add a footer for good measure <img class="emoji" draggable="false" alt="😉" src="https://s.w.org/images/core/emoji/72x72/1f609.png">
-        //     $pdf->WriteHTML($html);
-        //      // write the HTML into the PDF
-        //     $pdf->Output($pdfFilePath, 'F');
-        //      // save to file because we can
-            
-        // }
-        
-        // redirect("/downloads/reports/$filename.pdf");
-        echo "hello";
     }
     
     public function index() {
@@ -87,7 +67,10 @@ class digitalController extends CI_Controller
         else {
             $data = $this->input->post();
             if ($this->form_validation->run() == FALSE) {
-                $data = array("category" => $this->category->getCategory());
+                $data = array(
+                    "category" => $this->category->getCategory(),
+                    "document" => $this->document->getDocuments()
+                );
                 $this->load->view('adminView/admin-dashboard.php', $data);
             } 
             else {
@@ -125,10 +108,15 @@ class digitalController extends CI_Controller
                 $subject_id = $this->subject->insertSubject($subject);
                 
                 if ($_FILES["fileUpload"]["type"][0] == null) {
-                    echo 'no files';
+                    $data = array(
+                        "category" => $this->category->getCategory(),
+                        "document" => $this->document->getDocuments(),
+                        "err_file" => "File input field is required."
+                    );
+                    $this->load->view('adminView/admin-dashboard.php', $data);
                 } 
                 else {
-                    mkdir("documents/" . $data['category'] . "/" . $maxId);
+                    $message = "";
                     $target_dir = "documents/" . $data['category'] . "/" . $maxId . "/";
                     for ($i = 0; $i < count($_FILES["fileUpload"]["name"]); $i++) {
                         $target_file = $target_dir . basename($_FILES["fileUpload"]["name"][$i]);
@@ -141,27 +129,29 @@ class digitalController extends CI_Controller
                                 $uploadOk = 1;
                             } 
                             else {
-                                echo "File is not an image.";
+                                $message = "File is not an image.";
                                 $uploadOk = 0;
                             }
                         }
                         if (file_exists($target_file)) {
-                            echo "Sorry, file already exists.";
+                            $message = $message."\nSorry, file already exists.";
                             $uploadOk = 0;
                         }
                         if ($_FILES["fileUpload"]["size"][$i] > 2000000) {
-                            echo "Sorry, your file is too large.";
+                            $message = $message."\nSorry, your file is too large.";
                             $uploadOk = 0;
                         }
                         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-                            echo "Sorry, only JPG, JPEG, & PNG files are allowed.";
+                            $message = $message."\nSorry, only JPG, JPEG, & PNG files are allowed.";
                             $uploadOk = 0;
                         }
                         
                         if ($uploadOk == 0) {
-                            echo "Sorry, your file was not uploaded.";
+                            $message = $message."\nSorry, your file was not uploaded.";
+                            // $i++;
                         } 
                         else {
+                            mkdir("documents/" . $data['category'] . "/" . $maxId);
                             if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"][$i], $target_file)) {
                                 echo "The file " . basename($_FILES["fileUpload"]["name"][$i]) . " has been uploaded.";
                                 $attach = array('attach_id' => $data['subject'], 'filename' => $_FILES["fileUpload"]["name"][$i], 'document_id' => $maxId);
@@ -172,10 +162,18 @@ class digitalController extends CI_Controller
                             }
                         }
                     }
-                    
-                    $ids = array('date_id' => $date_id, 'keyword_id' => $key_id, 'category_id' => $data['category'], 'sender_id' => $sender_id, 'subject_id' => $subject_id, 'document_id' => $maxId);
-                    $this->document->insertDocument($ids);
-                    redirect('digitalController/adminDashBoard');
+                    if ($uploadOk == 0) {
+                        $data = array(
+                            "category" => $this->category->getCategory(),
+                            "document" => $this->document->getDocuments(),
+                            "err_file" => "Please input only valid image files. Make sure image files must be JPEG, PNG, and JPG."
+                        );
+                        $this->load->view('adminView/admin-dashboard.php', $data);
+                    } else{
+                        $ids = array('date_id' => $date_id, 'keyword_id' => $key_id, 'category_id' => $data['category'], 'sender_id' => $sender_id, 'subject_id' => $subject_id, 'document_id' => $maxId);
+                        $this->document->insertDocument($ids);
+                        redirect('digitalController/adminDashBoard');
+                    }
                 }
             }
         }

@@ -52,7 +52,8 @@
                                             </td>
                                             <td style="font-size: 12px;" class="center ">
                                                 <center>
-                                                 <a class="btn btn-info btn-small" href="<?php echo base_url('digitalController/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
+                                                 <!-- <a class="btn btn-info btn-small" href="<?php echo base_url('digitalController/viewDocument/'.$val->category_id.'/'.$val->document_id);?>"> -->
+                                                 <a class="btn btn-info btn-small" href="<?php echo base_url('doc/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
                                                  <i class="halflings-icon folder-open white"></i>  
                                                     View Document
                                                 </a>
