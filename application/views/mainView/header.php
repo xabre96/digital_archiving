@@ -53,8 +53,10 @@
                 text-align: center;
                 }
                 #ImgBanner{
-                    height: 120px;
-                   margin-top: 15px;
+                     height: 130px;
+                     margin-left: 100px;   
+                    margin-top: 15px;
+
                 }
                  ::-webkit-input-placeholder {
                     text-align: center;
@@ -81,9 +83,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                
+                <center>
                <img src="<?php echo base_url('images/main-banner-denr.png'); ?>" alt="image-banner" id="ImgBanner"/>
-               
+               </center>
                 <div>
                     <a href="#" class="btn btn-small btn-setting btn-success pull-right" style="width: 100px; margin-right: 60px; color: white;">Login</a>
                     

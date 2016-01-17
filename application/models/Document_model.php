@@ -13,7 +13,7 @@ class Document_Model extends CI_Model {
     }
 
     public function insertDocument($data){
-    	$this->db->insert('document', $data);
+    	return $this->db->insert('document', $data);
     }
 
     public function getDocuments(){
@@ -26,6 +26,6 @@ class Document_Model extends CI_Model {
         $this->db->delete('keywords', array('document_id' => $id));
         $this->db->delete('sender', array('document_id' => $id));
         $this->db->delete('subject', array('document_id' => $id));
-        $this->db->delete('document', array('document_id' => $id));
+        return $this->db->delete('document', array('document_id' => $id));
     }
 }

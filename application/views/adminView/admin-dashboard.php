@@ -5,11 +5,9 @@
         <div class="container">
 
              <br>
+             <?php echo $this->session->flashdata('message'); ?>
              <div class="box span12">
                             <div class="box-header" data-original-title="">
-                                <div class="box-icon">
-                                    <h2 style="margin-right: 35px;"><strong>Document List<i class="halflings-icon th-list"></i></strong></h2>
-                                </div>
                             </div>
                             <div class="box-content">
                                 <a href="#" class="btn btn-info btn-setting btn-small"><i class="halflings-icon edit white"></i>Add Document</a>
@@ -53,9 +51,9 @@
                                             <center>
                                                  <a class="btn btn-info btn-small white" href="<?php echo base_url('doc/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
                                                  <i class="halflings-icon folder-open white"></i>  
-                                                    View
+                                                    Open
                                                 </a>
-                                                 <a class="btn btn-danger btn-small" href="<?php echo base_url('digitalController/deleteDocument/'.$val->category_id.'/'.$val->document_id);?>">
+                                                 <a class="btn btn-danger btn-small" data-toggle="modal" data-target="#delete<?php echo $val->document_id ;?>" >
                                                     <i class="halflings-icon white trash"></i> 
                                                     Delete
                                                 </a>
@@ -87,8 +85,8 @@
                                  <?php echo form_error('subject', '<p style="color:red;">', '</p>');?>
                                   <label class="control-label" for="subject"> Subject</label>
                                   <div class="controls">
-                                    <!-- <input type="text" name="subject" placeholder="Ex. Subject"> -->
-                                    <textarea name="subject" cols="30" rows="10"></textarea>
+                                    
+                                    <textarea name="subject" id="" cols="30" rows="5"></textarea>
                                   </div>
                                 </div>
                                 <div class="control-group">
@@ -149,6 +147,36 @@
                     </div>
                     </form> 
             </div>
+        <!-- End of Modal -->
+
+
+        <!-- Modal -->
+        <?php foreach ($document as $key => $val) {
+        	if($val->document_id == 0){
+        	} ?>
+
+            <div class="modal fade" id="delete<?php echo $val->document_id;?>" aria-hidden="true" style="display: none;">
+                        <div class="modal-header" style="background-color: red;">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h2 style="color: white; font-size: 27px;">!Warning</h2>
+                        </div>
+
+                <div class="modal-body">
+                    <div class=" span5">
+                              <center>
+                             	 <h3>Do you want to delete this document?</h3>
+                        	  </center>
+                	</div>
+               
+                    </div>
+                    <div class="modal-footer">
+                    
+                        <a href="<?php echo base_url('digitalController/deleteDocument/'.$val->category_id.'/'.$val->document_id);?>" value="Yes" class="btn btn-primary btn-flat pull-left" style="width: 70px;">Yes</a>
+                        <a href="#" class="btn btn-default btn-flat pull-right" data-dismiss="modal" style="width: 45px;">No</a>
+                     
+                    </div>
+            </div>
+           <?php } ?>
         <!-- End of Modal -->
 
                <br>

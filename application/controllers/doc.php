@@ -19,8 +19,9 @@ class Doc extends CI_Controller {
     $name = $this->attach->getAttach($document_id);
     
     foreach ($name as $key => $value) {
-      $this->pdf->AddPage("L");
+      $this->pdf->AddPage("P");
       $this->pdf->centreImage('documents/'.$category_id.'/'.$document_id.'/'.$value->filename);
+      // $this->pdf->Image('documents/'.$category_id.'/'.$document_id.'/'.$value->filename);
       $this->pdf->ln(20);
     }
     $file = ''.$document_id.'.pdf';

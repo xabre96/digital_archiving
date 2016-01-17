@@ -7,7 +7,7 @@
     
              <div class="box span12">
              <center>
-                     <img src="<?php echo base_url('images/main-logo.png'); ?>" id="ImgLogo" alt="image-log">
+                     <!-- <img src="<?php //echo base_url('images/main-logo.png'); ?>" id="ImgLogo" alt="image-log"> -->
                </center>
                <br>
                             <div class="box-header" data-original-title="">
@@ -55,7 +55,7 @@
                                                  <!-- <a class="btn btn-info btn-small" href="<?php echo base_url('digitalController/viewDocument/'.$val->category_id.'/'.$val->document_id);?>"> -->
                                                  <a class="btn btn-info btn-small" href="<?php echo base_url('doc/viewDocument/'.$val->category_id.'/'.$val->document_id);?>">
                                                  <i class="halflings-icon folder-open white"></i>  
-                                                    View Document
+                                                    Open
                                                 </a>
                                                 </center>
                                             </td>
@@ -76,7 +76,7 @@
                         <div class="modal-header" style="background-color: green;">
                             <button type="button" class="close" data-dismiss="modal">×</button>
                             <center>
-                                <h1 style="color: white;"><i class="halflings-icon share-alt" style="color: white;"></i>Login User Account</h1>
+                                <h1 style="color: white;">Login User Account</h1>
                             </center>
                         </div>
 
@@ -88,13 +88,13 @@
                                     <br>
                                          <?php echo form_error('username', '<p style="color:red;">', '</p>');?>
                                         <label>Username</label>
-                                        <input type="text" name="username" placeholder="Enter your username" style="height: 40px; width: 300px;"/>
+                                        <input type="text" name="username" placeholder="Enter your username" style="height: 40px; width: 300px; text-align: center;"/>
                                         <br><br>
                                          <?php echo form_error('password', '<p style="color:red;">', '</p>');?>
                                         <label>Password</label>
-                                        <input type="password" name="password" placeholder="Enter your password"style="height: 40px; width: 300px;"/>
+                                        <input type="password" name="password" placeholder="Enter your password"style="height: 40px; width: 300px; text-align: center;"/>
                                         <br><br><br>
-                                        <button type="submit" class="btn btn-primary btn-flat" style="width: 300px;">Login</button>
+                                        <button type="submit" class="btn btn-primary btn-flat" style="height: 40px; width: 300px;">Submit</button>
                                         <br><br>
                                         <?php echo "<p style='color:red;'>".@$message."</p>"; ?>
                                     </div>

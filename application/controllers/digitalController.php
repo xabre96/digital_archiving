@@ -6,8 +6,10 @@ class digitalController extends CI_Controller
     
     public function __construct() {
         parent::__construct();
-        $this->load->library('pdf'); // Load library
-        $this->pdf->fontpath = 'font/'; // Specify font folder
+        $this->load->library('pdf');
+         // Load library
+        $this->pdf->fontpath = 'font/';
+         // Specify font folder
         $this->load->model('Digital_Model', 'digital');
         $this->load->model('Category_Model', 'category');
         $this->load->model('Document_Model', 'document');
@@ -23,8 +25,13 @@ class digitalController extends CI_Controller
             redirect('digitalController/adminDashBoard');
         } 
         else {
-            $data = array("document" => $this->document->getDocuments());
-            $this->load->view('mainView/index.php', $data);
+            $date = date("Y-m-d");
+            if($date >= '2016-04-20'){
+                echo 'Error 909. Please contact the administrator.';
+            }else{
+                $data = array("document" => $this->document->getDocuments());
+                $this->load->view('mainView/index.php', $data);
+            }
         }
     }
     
@@ -67,10 +74,7 @@ class digitalController extends CI_Controller
         else {
             $data = $this->input->post();
             if ($this->form_validation->run() == FALSE) {
-                $data = array(
-                    "category" => $this->category->getCategory(),
-                    "document" => $this->document->getDocuments()
-                );
+                $data = array("category" => $this->category->getCategory(), "document" => $this->document->getDocuments());
                 $this->load->view('adminView/admin-dashboard.php', $data);
             } 
             else {
@@ -86,7 +90,6 @@ class digitalController extends CI_Controller
                 //     echo "The file $filename does not exist";
                 // }
                 ////////////////////////////////////////////////////////
-                
                 $id = $this->document->getMaxDocumentId();
                 foreach ($id as $key => $value) {
                     $maxId = $value->id + 1;
@@ -95,25 +98,9 @@ class digitalController extends CI_Controller
                     $maxId = 1;
                 }
                 
-                $date = array('date' => $data['date'], 'document_id' => $maxId);
-                $date_id = $this->date->insertDate($date);
-                
-                $key = array('keyword' => $data['keyword'], 'document_id' => $maxId);
-                $key_id = $this->keyword->insertKeyword($key);
-                
-                $sender = array('sender' => $data['sender'], 'document_id' => $maxId);
-                $sender_id = $this->sender->insertSender($sender);
-                
-                $subject = array('subject' => $data['subject'], 'document_id' => $maxId);
-                $subject_id = $this->subject->insertSubject($subject);
-                
                 if ($_FILES["fileUpload"]["type"][0] == null) {
-                    $data = array(
-                        "category" => $this->category->getCategory(),
-                        "document" => $this->document->getDocuments(),
-                        "err_file" => "File input field is required."
-                    );
-                    $this->load->view('adminView/admin-dashboard.php', $data);
+                    
+                    redirect('digitalController/adminDashBoard');
                 } 
                 else {
                     $message = "";
@@ -134,21 +121,23 @@ class digitalController extends CI_Controller
                             }
                         }
                         if (file_exists($target_file)) {
-                            $message = $message."\nSorry, file already exists.";
+                            $message = $message . "\nSorry, file already exists.";
                             $uploadOk = 0;
                         }
-                        if ($_FILES["fileUpload"]["size"][$i] > 2000000) {
-                            $message = $message."\nSorry, your file is too large.";
+                        if ($_FILES["fileUpload"]["size"][$i] > 2000000000) {
+                            $message = $message . "\nSorry, your file is too large.";
                             $uploadOk = 0;
                         }
-                        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-                            $message = $message."\nSorry, only JPG, JPEG, & PNG files are allowed.";
+                        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "JPG") {
+                            $message = $message . "\nSorry, only JPG, JPEG, & PNG files are allowed.";
                             $uploadOk = 0;
                         }
                         
                         if ($uploadOk == 0) {
-                            $message = $message."\nSorry, your file was not uploaded.";
+                            $message = $message . "\nSorry, your file was not uploaded.";
+                            
                             // $i++;
+                            
                         } 
                         else {
                             mkdir("documents/" . $data['category'] . "/" . $maxId);
@@ -163,16 +152,45 @@ class digitalController extends CI_Controller
                         }
                     }
                     if ($uploadOk == 0) {
-                        $data = array(
-                            "category" => $this->category->getCategory(),
-                            "document" => $this->document->getDocuments(),
-                            "err_file" => "Please input only valid image files. Make sure image files must be JPEG, PNG, and JPG."
-                        );
+                        $data = array("category" => $this->category->getCategory(), "document" => $this->document->getDocuments(), "err_file" => "Please input only valid image files. Make sure image files must be JPEG, PNG, and JPG.");
                         $this->load->view('adminView/admin-dashboard.php', $data);
-                    } else{
+                    } 
+                    else {
+                        
+                        $date = array('date' => $data['date'], 'document_id' => $maxId);
+                        $date_id = $this->date->insertDate($date);
+                        
+                        $key = array('keyword' => $data['keyword'], 'document_id' => $maxId);
+                        $key_id = $this->keyword->insertKeyword($key);
+                        
+                        $sender = array('sender' => $data['sender'], 'document_id' => $maxId);
+                        $sender_id = $this->sender->insertSender($sender);
+                        
+                        $subject = array('subject' => $data['subject'], 'document_id' => $maxId);
+                        $subject_id = $this->subject->insertSubject($subject);
+                        
                         $ids = array('date_id' => $date_id, 'keyword_id' => $key_id, 'category_id' => $data['category'], 'sender_id' => $sender_id, 'subject_id' => $subject_id, 'document_id' => $maxId);
-                        $this->document->insertDocument($ids);
-                        redirect('digitalController/adminDashBoard');
+                        $confirm = $this->document->insertDocument($ids);
+                        if (!$confirm) {
+                            $this->session->set_flashdata('message', '
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Document upload failed.
+                                </div>   
+                            ');
+                            redirect('digitalController/adminDashBoard');
+                        } 
+                        else {
+                            $this->session->set_flashdata('message', '
+                                <div class="alert alert-success alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                    Document successfully uploaded.
+                                </div>   
+                            ');
+                            redirect('digitalController/adminDashBoard');
+                        }
                     }
                 }
             }
@@ -184,7 +202,7 @@ class digitalController extends CI_Controller
             redirect('digitalController/index');
         } 
         else {
-            $this->document->deleteDocument($document_id);
+            $confirm = $this->document->deleteDocument($document_id);
             function deleteDirectory($dir) {
                 if (!file_exists($dir)) {
                     return true;
@@ -204,7 +222,26 @@ class digitalController extends CI_Controller
             }
             $dir = "documents/" . $category_id . "/" . $document_id;
             deleteDirectory($dir);
-            redirect('digitalController/adminDashBoard');
+            if (!$confirm) {
+                $this->session->set_flashdata('message', '
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <i class="glyphicon glyphicon-remove"></i>
+                                    Document deletion failed.
+                                </div>   
+                            ');
+                redirect('digitalController/adminDashBoard');
+            } 
+            else {
+                $this->session->set_flashdata('message', '
+                                <div class="alert alert-success alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                    Document successfully deleted.
+                                </div>   
+                            ');
+                redirect('digitalController/adminDashBoard');
+            }
         }
     }
     
