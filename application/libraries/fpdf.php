@@ -73,6 +73,12 @@ var $PDFVersion;         // PDF version number
 *                               Public methods                                 *
 *                                                                              *
 *******************************************************************************/
+function __construct()
+{
+        //nothing
+}
+
+
 function FPDF($orientation='P', $unit='mm', $size='A4')
 {
 	// Some checks
@@ -1800,5 +1806,3 @@ if(isset($_SERVER['HTTP_USER_AGENT']) && $_SERVER['HTTP_USER_AGENT']=='contype')
 	header('Content-Type: application/pdf');
 	exit;
 }
-
-?>

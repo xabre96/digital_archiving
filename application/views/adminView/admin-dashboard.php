@@ -158,7 +158,7 @@
             <div class="modal fade" id="delete<?php echo $val->document_id;?>" aria-hidden="true" style="display: none;">
                         <div class="modal-header" style="background-color: red;">
                             <button type="button" class="close" data-dismiss="modal">×</button>
-                            <h2 style="color: white; font-size: 27px;">!Warning</h2>
+                            <h2 style="color: white; font-size: 27px;">Warning!</h2>
                         </div>
 
                 <div class="modal-body">

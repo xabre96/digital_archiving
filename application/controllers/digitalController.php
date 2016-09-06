@@ -7,9 +7,7 @@ class digitalController extends CI_Controller
     public function __construct() {
         parent::__construct();
         $this->load->library('pdf');
-         // Load library
         $this->pdf->fontpath = 'font/';
-         // Specify font folder
         $this->load->model('Digital_Model', 'digital');
         $this->load->model('Category_Model', 'category');
         $this->load->model('Document_Model', 'document');
@@ -26,7 +24,7 @@ class digitalController extends CI_Controller
         } 
         else {
             $date = date("Y-m-d");
-            if($date >= '2016-04-20'){
+            if($date >= '2017-04-20'){
                 echo 'Error 909. Please contact the administrator.';
             }else{
                 $data = array("document" => $this->document->getDocuments());
@@ -112,7 +110,7 @@ class digitalController extends CI_Controller
                         if (isset($_POST["submit"])) {
                             $check = getimagesize($_FILES["fileUpload"]["tmp_name"][$i]);
                             if ($check !== false) {
-                                echo "File is an image - " . $check["mime"] . ".";
+                                //echo "File is an image - " . $check["mime"] . ".";
                                 $uploadOk = 1;
                             } 
                             else {
@@ -135,20 +133,20 @@ class digitalController extends CI_Controller
                         
                         if ($uploadOk == 0) {
                             $message = $message . "\nSorry, your file was not uploaded.";
-                            
-                            // $i++;
-                            
+                     
                         } 
                         else {
-                            mkdir("documents/" . $data['category'] . "/" . $maxId);
-                            if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"][$i], $target_file)) {
-                                echo "The file " . basename($_FILES["fileUpload"]["name"][$i]) . " has been uploaded.";
-                                $attach = array('attach_id' => $data['subject'], 'filename' => $_FILES["fileUpload"]["name"][$i], 'document_id' => $maxId);
-                                $attach_id = $this->attach->insertAttach($attach);
-                            } 
-                            else {
-                                echo "Sorry, there was an error uploading your file.";
-                            }
+							if($i==0){
+								mkdir("documents/" . $data['category'] . "/" . $maxId);
+							}
+							if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"][$i], $target_file)) {
+								//echo "The file " . basename($_FILES["fileUpload"]["name"][$i]) . " has been uploaded.";
+								$attach = array('attach_id' => $data['subject'], 'filename' => $_FILES["fileUpload"]["name"][$i], 'document_id' => $maxId);
+								$attach_id = $this->attach->insertAttach($attach);
+							} 
+							else {
+								//echo "Sorry, there was an error uploading your file.";
+							}
                         }
                     }
                     if ($uploadOk == 0) {
